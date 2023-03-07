@@ -1,21 +1,32 @@
 package com.gfa.galaxy;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 @RestController
 public class Navigator {
-    private final Engine engine;
+    private final Machine machine;
 
     @Autowired
-    public Navigator(Engine engine) {
-        this.engine = engine;
+    public Navigator(Machine machine) {
+        this.machine = machine;
     }
 
     @GetMapping({"", "/"})
-    public ResponseEntity<?> index() {
-        return ResponseEntity.ok(null);
+    public ResponseEntity<List<Starlog>> index() {
+        return this.machine.get();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Starlog> show(@PathVariable Long id) {
+        return this.machine.get(id);
+    }
+
+    @PutMapping("/")
+    public ResponseEntity<Starlog> store(@RequestBody Starlog starlog) {
+        return this.machine.save(starlog);
     }
 }

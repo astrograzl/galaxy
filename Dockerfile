@@ -6,6 +6,6 @@ RUN ["./gradlew", "bootJar"]
 
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /alpha
-COPY --from=builder /alpha/build/libs/*.jar app.jar
+COPY --from=builder /alpha/build/libs/*.jar boot.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "boot.jar"]
