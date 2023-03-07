@@ -4,5 +4,5 @@ import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
-public interface Registry extends JpaRepository<Starlog,Long> {
+public interface Register extends JpaRepository<Starlog,Long> {
 }

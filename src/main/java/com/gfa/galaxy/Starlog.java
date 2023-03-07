@@ -23,10 +23,9 @@ public class Starlog {
     private String title;
     private String content;
     public String getContent() {
-        final int length = 256; // 128
-        final int contentLength = this.content.length();
-        return contentLength > length ?
-                this.content.substring(0, length) :
-                this.content.substring(0, contentLength);
+        final int length = 128;
+        return this.content.length() < length ? this.content :
+                this.content.substring(0, length);
+
     }
 }

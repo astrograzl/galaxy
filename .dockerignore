@@ -1,9 +1,8 @@
-*.md
-!Readme.md
-.git/
-.gitignore
+#!Dockerfile
+docker-compose.yaml
 .dockerignore
-# Dockerfile
-.gradle/
+.gitignore
+.git/
 .idea/
+.gradle/
 build/

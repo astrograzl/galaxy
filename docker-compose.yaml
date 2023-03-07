@@ -1,0 +1,27 @@
+name: space
+services:
+
+  galaxy:
+    image: astrograzl/galaxy:alpine
+    restart: unless-stopped
+    expose:
+      - "8080"
+    depends_on:
+      - database
+    env_file:
+      - .env
+
+  database:
+    image: mysql:latest
+    restart: unless-stopped
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: yes
+      MYSQL_ONETIME_PASSWORD: yes
+      MYSQL_DATABASE: ${DBNAME}
+      MYSQL_PASSWORD: ${DBPSWD}
+      MYSQL_USER: ${DBUSER}
+  
+# networks:
+# volumes:
+# configs:
+# secrets:
