@@ -1,15 +1,22 @@
 name: space
+
 services:
 
   galaxy:
     image: astrograzl/galaxy:alpine
     restart: unless-stopped
     expose:
-      - "8080"
+      - 8080
     depends_on:
       - database
     env_file:
       - .env
+  
+  reactor:
+    image: astrograzl/reactor:alpine
+    restart: unless-stopped
+    expose:
+      - 3000
 
   database:
     image: mysql:latest

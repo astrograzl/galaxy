@@ -1,0 +1,12 @@
+FROM node:alpine as builder
+WORKDIR /omega
+RUN ["npx", "create-react-app", "."]
+# RUN ["npm", "run", "build"]
+# RUN ["npm", "install", "serve"]
+
+FROM node:alpine
+WORKDIR /omega
+COPY --from=builder /omega  .
+EXPOSE 3000
+ENTRYPOINT ["npm", "start"]
+# ENTRYPOINT ["serve", "-s", "."]
