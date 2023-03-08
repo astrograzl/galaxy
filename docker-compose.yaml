@@ -2,6 +2,12 @@ name: space
 
 services:
 
+  reactor:
+    image: astrograzl/reactor:alpine
+    restart: unless-stopped
+    expose:
+      - 3000
+
   galaxy:
     image: astrograzl/galaxy:alpine
     restart: unless-stopped
@@ -11,12 +17,6 @@ services:
       - database
     env_file:
       - .env
-  
-  reactor:
-    image: astrograzl/reactor:alpine
-    restart: unless-stopped
-    expose:
-      - 3000
 
   database:
     image: mysql:latest
